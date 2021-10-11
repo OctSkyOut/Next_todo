@@ -6,6 +6,12 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/prop-types" : "off",
     "react/jsx-props-no-spreading":"off",
-    "react/jsx-one-expression-per-line": "off"
+    "react/jsx-one-expression-per-line": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "arrow-body-style" : "off",
+    "no-console" :"off",
+    "jsx-a11y/control-has-associated-label" : "off",
+    "nonblock-statement-body-position" : "off",
+    "curly" : "off"
   }
 }
