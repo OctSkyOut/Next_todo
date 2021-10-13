@@ -12,6 +12,8 @@
     "no-console" :"off",
     "jsx-a11y/control-has-associated-label" : "off",
     "nonblock-statement-body-position" : "off",
-    "curly" : "off"
+    "curly" : "off",
+    "jsx-a11y/label-has-associated-control" : "off",
+    "comma-dangle" : "off"
   }
 }
