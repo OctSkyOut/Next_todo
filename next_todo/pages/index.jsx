@@ -18,7 +18,6 @@ const App = () => {
       <Link href={`/users/${username}`}>
         <a>{username} Github 검색하기</a>
       </Link>
-      <img src="/IMG_0509.jpg" alt="스레드" />
     </div>
   );
 };
