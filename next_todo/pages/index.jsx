@@ -1,29 +1,24 @@
-import { useRouter } from 'next/router';
 import { useState } from 'react';
+import Link from 'next/link';
 
 const App = () => {
-  const [name, setName] = useState('');
-
-  const router = useRouter();
-  const routerPush = (aRouter, dynamicPageName = '') => {
-    if (dynamicPageName !== '')
-      return aRouter.push(`/vegetable/${dynamicPageName}`);
-    return aRouter.push('/tomato');
-  };
+  const [username, setUsernanme] = useState('');
   return (
     <div>
-      <button type="button" onClick={() => routerPush(router)}>
-        tomato로 가기
-      </button>
+      <label>
+        username
+        <input
+          type="text"
+          onChange={(e) => {
+            setUsernanme(e.target.value);
+          }}
+        />
+      </label>
       <br />
-      <input
-        type="text"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
-      />
-      <button type="button" onClick={() => routerPush(router, name)}>
-        {name}으로 가기
-      </button>
+      <Link href={`/users/${username}`}>
+        <a>{username} Github 검색하기</a>
+      </Link>
+      <img src="/IMG_0509.jpg" alt="스레드" />
     </div>
   );
 };
