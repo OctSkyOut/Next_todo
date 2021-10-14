@@ -1,4 +1,4 @@
-import styles from '../../../../styles/components/GitProfile.module.scss';
+import styles from '../../../../styles/components/Git/Profile/GitProfile.module.scss';
 
 const isAvaiableInformation = (info) => info || '정보가 없습니다.';
 

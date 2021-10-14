@@ -2,7 +2,7 @@ import { AiOutlineMail, AiOutlineLink } from 'react-icons/ai';
 import { HiLocationMarker } from 'react-icons/hi';
 import { VscOrganization } from 'react-icons/vsc';
 import EtcUserInformation from './EtcUserInformation';
-import styles from '../../../../styles/components/GitProfile.module.scss';
+import styles from '../../../../styles/components/Git/Profile/GitProfile.module.scss';
 
 const GitProfile = ({ user }) => {
   return (
