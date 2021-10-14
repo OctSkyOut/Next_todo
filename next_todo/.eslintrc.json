@@ -15,6 +15,7 @@
     "curly" : "off",
     "jsx-a11y/label-has-associated-control" : "off",
     "comma-dangle" : "off",
-    "jsx-a11y/img-redundant-alt" : "off"
+    "jsx-a11y/img-redundant-alt" : "off",
+    "operator-linebreak" : "off"
   }
 }
