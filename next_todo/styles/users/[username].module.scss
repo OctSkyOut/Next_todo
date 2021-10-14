@@ -1,0 +1,34 @@
+.profile_wrapper{
+  width: 25%;
+  max-width: 270px;
+  margin-left: 25px;
+  
+  & .img_wrapper {
+    border: 1px solid #969696d2;  
+  }
+
+  & .img_wrapper, & .img_wrapper>.profile_avatar{
+    width: 100%;
+    display: block;
+  }
+  
+
+  & .profile_user_name, & .profile_user_login, & .profile_user_bio {
+    margin: 0;
+  }
+  
+  & .profile_user_name, & .profile_user_bio{
+    padding: 14px 0 0 0;
+  }
+
+  & .profile_user_name{
+    font-size: 26px;
+  }
+  & .profile_user_login{
+    font-size: 20px;
+  } 
+  & .profile_user_bio{
+    font-size: 14px;
+  }
+
+}
