@@ -1,8 +1,19 @@
 import axios from 'axios';
+import GitProfile from '../components/GitProfile';
 
 const getUserComponant = ({ user }) => {
-  const username = user && user.name;
-  return <div>{username}</div>;
+  if (!user) {
+    return (
+      <div>
+        <p>유저 정보가 없습니다.</p>
+      </div>
+    );
+  }
+  return (
+    <>
+      <GitProfile user={user} />
+    </>
+  );
 };
 
 export const getServerSideProps = async ({ query }) => {

@@ -4,7 +4,7 @@
   margin-left: 25px;
   
   & .img_wrapper {
-    border: 1px solid #969696d2;  
+    border: 1px solid #686868;  
   }
 
   & .img_wrapper, & .img_wrapper>.profile_avatar{
@@ -13,8 +13,24 @@
   }
   
 
-  & .profile_user_name, & .profile_user_login, & .profile_user_bio {
+  & .profile_user_name,
+  & .profile_user_login,
+  & .profile_user_bio,
+  & .profile_user_location,
+  & .profile_user_email,
+  & .profile_user_company,
+  & .profile_user_blog {
     margin: 0;
+    display: flex;
+    align-items: center;
+  }
+  & .profile_user_location,
+  & .profile_user_email,
+  & .profile_user_company,
+  & .profile_user_blog {
+    & .profile_text{
+      margin-left: 5px;
+    }
   }
   
   & .profile_user_name, & .profile_user_bio{
