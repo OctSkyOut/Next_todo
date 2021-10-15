@@ -1,21 +1,35 @@
 {
-  "plugins": ["prettier"],
-  "extends": ["eslint:recommended", "plugin:prettier/recommended", "airbnb","plugin:react/jsx-runtime"],
+  "env": {
+    "browser": true,
+    "es6": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:prettier/recommended",
+    "next/core-web-vitals"
+  ],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "react-hooks", "prettier"],
   "rules": {
-    "prettier/prettier": "error",
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "react/prop-types" : "off",
-    "react/jsx-props-no-spreading":"off",
-    "react/jsx-one-expression-per-line": "off",
-    "jsx-a11y/anchor-is-valid": "off",
-    "arrow-body-style" : "off",
-    "no-console" :"off",
-    "jsx-a11y/control-has-associated-label" : "off",
-    "nonblock-statement-body-position" : "off",
-    "curly" : "off",
-    "jsx-a11y/label-has-associated-control" : "off",
-    "comma-dangle" : "off",
-    "jsx-a11y/img-redundant-alt" : "off",
-    "operator-linebreak" : "off"
+    "react/react-in-jsx-scope": 0,
+    "react/prefer-stateless-function": 0,
+    "react/jsx-filename-extension": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "no-nested-ternary": 0
   }
 }
