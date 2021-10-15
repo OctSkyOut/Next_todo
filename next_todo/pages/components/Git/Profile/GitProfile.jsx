@@ -5,6 +5,13 @@ import EtcUserInformation from './EtcUserInformation';
 import styles from '../../../../styles/components/Git/Profile/GitProfile.module.scss';
 
 const GitProfile = ({ user }) => {
+  if (!user)
+    return (
+      <>
+        <h1>유저정보가 없습니다.</h1>
+      </>
+    );
+
   return (
     <>
       <div className={styles.profile_wrapper}>

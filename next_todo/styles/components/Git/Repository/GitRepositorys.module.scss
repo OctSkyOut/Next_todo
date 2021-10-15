@@ -60,8 +60,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
-    & button {
+      & > a {
+        border: none;
+      }
+      & .repo_next, & .repo_previous{
+      width: 100px;
+      height : 30px;
       padding: 6px 12px;
       font-size: 14px;
       color: #3d3d3d;
@@ -70,7 +74,17 @@
       outline: none;
       font-weight: 700;
       box-shadow: none;
-    }    
+      border: none;
     }
-
+    & .repo_next {
+      border-left: 1px solid #3d3d3d;
+    }
+    & .repo_next:disabled, & .repo_previous:disabled{
+      background-color: #c5c5c5;
+      color: #686868;
+    }
+    & .repo_next:hover:not([disabled]), & .repo_previous:hover:not([disabled]){
+      background-color: #fafafa;
+    }
+  }
 }

@@ -7,6 +7,10 @@ const GitRepository = ({ user, repositorys }) => {
   const router = useRouter();
   const { page = '1' } = router.query;
 
+  if (!user || !repositorys) {
+    return null;
+  }
+
   return (
     <div className={styles.repos_wrapper}>
       <div className={styles.repos_header}>
@@ -39,18 +43,26 @@ const GitRepository = ({ user, repositorys }) => {
           );
         })}
       <div className={styles.repo_page}>
-        <Link href={`/users/${user.name}?page=${Number(page) - 1}`}>
+        <Link href={`/users/${user.login}?page=${Number(page) - 1}`}>
           <a>
-            <button type="button" disabled={page && page === '1'}>
+            <button
+              className={styles.repo_previous}
+              type="button"
+              disabled={page && page === '1'}
+            >
               Previous
             </button>
           </a>
         </Link>
         <Link
-          href={`/users/${user.name}?page=${!page ? '2' : Number(page) + 1}`}
+          href={`/users/${user.login}?page=${!page ? '2' : Number(page) + 1}`}
         >
           <a>
-            <button type="button" disabled={repositorys.length < 10}>
+            <button
+              className={styles.repo_next}
+              type="button"
+              disabled={repositorys.length < 10}
+            >
               Next
             </button>
           </a>
