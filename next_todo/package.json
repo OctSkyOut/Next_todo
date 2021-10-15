@@ -18,7 +18,6 @@
   },
   "devDependencies": {
     "@types/react": "17.0.30",
-    "@zeit/next-sass": "^1.0.1",
     "babel-eslint": "^10.1.0",
     "eslint": "^8.0.1",
     "eslint-config-airbnb": "^18.2.1",

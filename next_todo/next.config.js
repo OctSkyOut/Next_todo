@@ -1,10 +1,5 @@
 const path = require('path');
-const withPlugins = require('next-compose-plugins');
-const withSass = require('@zeit/next-sass');
-
-module.exports = withSass({
-  cssModules: true,
-});
+// const withPlugins = require('next-compose-plugins');
 
 module.exports = {
   reactStrictMode: true,
