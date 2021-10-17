@@ -1,21 +1,29 @@
-import type { NextPage } from 'next';
+import { GetServerSideProps, NextPage } from 'next';
+import { getAllTodosApi } from '../lib/api/todos/todos';
+import TodoList from '../components/Todo/TodoList/TodoList';
 import { TodoType } from '../types/todo';
-import styles from '../styles/Home.module.scss';
-import TodoList from './components/Todo/TodoList/TodoList';
 
-const todos: TodoType[] = [
-  { id: 1, text: 'ㅁaaaㄴㅇㄹ', color: 'red', checked: false },
-  { id: 2, text: 'asd', color: 'blue', checked: false },
-  { id: 3, text: 'cx', color: 'red', checked: false },
-  { id: 4, text: 'baaaaa', color: 'green', checked: false },
-  { id: 5, text: 'e', color: 'yellow', checked: false },
-  { id: 6, text: 'faaaa', color: 'orange', checked: false },
-  { id: 7, text: 'gaaaaaa', color: 'orange', checked: true },
-  { id: 8, text: 'hg', color: 'red', checked: false },
-];
+interface IProps {
+  todos: TodoType[];
+}
 
-const Home: NextPage = () => {
+const Home: NextPage<IProps> = ({ todos }) => {
   return <TodoList todos={todos} />;
+};
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  try {
+    const res = await getAllTodosApi();
+    if (res.status === 200) {
+      // success
+      return { props: { todos: res.data } };
+    }
+    // fail
+    return { props: { todos: [] } };
+  } catch (error) {
+    console.log(error);
+    return { props: { todos: [] } };
+  }
 };
 
 export default Home;

@@ -1,4 +1,4 @@
-import { TodoType } from '../../../../../types/todo';
+import { TodoType } from '../../../../types/todo';
 import { useMemo } from 'react';
 
 type ColorIndexType = {
