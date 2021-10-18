@@ -18,8 +18,9 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
 
       // todo 새로운 Todo 생성 후 주입
       const todoList = await TodoSearchFunction.getTodoList();
+
       const newTodo: TodoType = {
-        id: todoList.length,
+        id: todoList.length ? todoList[todoList.length - 1].id + 1 : 0,
         text: text,
         color: color,
         checked: false,
