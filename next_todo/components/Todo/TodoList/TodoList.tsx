@@ -1,18 +1,19 @@
 import React, { useCallback, useState } from 'react';
 import Link from 'next/Link';
+import { useSelector } from '../../../store/index';
+import { todoActions } from '../../../store/todo';
+import { useDispatch } from 'react-redux';
 import { MdDeleteOutline, MdCheck } from 'react-icons/md';
 import { v4 } from 'uuid';
 import Swal from 'sweetalert2';
-import { TodoType } from '../../../types/todo';
 import countTodoColors from './Functions/CountTodoColor';
 import styles from '../../../styles/components/Todo/TodoList/TodoList.module.scss';
 import { patchTodoApi, deleteTodoApi } from '../../../lib/api/todos/[id]';
 
-interface IProps {
-  todos: TodoType[];
-}
+const TodoList: React.FC = () => {
+  const todos = useSelector((state) => state.todo.todos);
+  const dispatch = useDispatch();
 
-const TodoList: React.FC<IProps> = ({ todos }) => {
   const [todosState, setTodosState] = useState(todos);
 
   const changeCheckedStatus = (id: number) => {
@@ -21,13 +22,13 @@ const TodoList: React.FC<IProps> = ({ todos }) => {
         return todo.id === id ? { ...todo, checked: !todo.checked } : todo;
       })
     );
+    dispatch(todoActions.setTodo(todosState));
   };
   // TODO todo를 하나 완료 할 때 해당 함수 호출 (완료, 완료취소 할 때)
   const checkTodo = useCallback(
     async (id: number) => {
       try {
         const patchRes = await patchTodoApi(id);
-        console.log(patchRes.data);
         if (patchRes.data === true) {
           return Swal.fire({
             title: '🎉 축하해요! 🎉',
@@ -78,8 +79,11 @@ const TodoList: React.FC<IProps> = ({ todos }) => {
       const patchRes = await deleteTodoApi(id);
       if (patchRes.data === true) {
       }
-      Swal.fire('삭제되었어요!', 'Todo가 삭제되었습니다.', 'success').then(() =>
-        setTodosState([...todosState.filter((todo) => todo.id !== id)])
+      Swal.fire('삭제되었어요!', 'Todo가 삭제되었습니다.', 'success').then(
+        () => {
+          setTodosState([...todosState.filter((todo) => todo.id !== id)]);
+          dispatch(todoActions.setTodo(todosState));
+        }
       );
     });
   }, []);

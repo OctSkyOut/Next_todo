@@ -2,28 +2,23 @@ import { GetServerSideProps, NextPage } from 'next';
 import { getAllTodosApi } from '../lib/api/todos/todos';
 import TodoList from '../components/Todo/TodoList/TodoList';
 import { TodoType } from '../types/todo';
+import { wrapper } from '../store';
+import { todoActions } from '../store/todo';
 
-interface IProps {
-  todos: TodoType[];
-}
-
-const Home: NextPage<IProps> = ({ todos }) => {
-  return <TodoList todos={todos} />;
+const Home: NextPage = () => {
+  return <TodoList />;
 };
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  try {
-    const res = await getAllTodosApi();
-    if (res.status === 200) {
-      // success
-      return { props: { todos: res.data } };
+export const getServerSideProps: GetServerSideProps =
+  wrapper.getServerSideProps((store) => async ({ req, res }) => {
+    try {
+      const apiRes = await getAllTodosApi();
+      store.dispatch(todoActions.setTodo(apiRes.data));
+      return { props: {} };
+    } catch (error) {
+      console.log(error);
+      return { props: {} };
     }
-    // fail
-    return { props: { todos: [] } };
-  } catch (error) {
-    console.log(error);
-    return { props: { todos: [] } };
-  }
-};
+  });
 
 export default Home;
