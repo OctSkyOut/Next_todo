@@ -12,7 +12,7 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
       res.statusCode = 404;
       return res.send(false);
     }
-    console.log(req.method);
+
     // ANCHOR PATCH 메소드
     if (req.method === 'PATCH') {
       // TODO todo가 존재한다면 체크 수정을 한 후 투두리스트들을 리턴
@@ -36,7 +36,6 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'DELETE') {
       // TODO todo가 존재한다면 선택한 todo삭제
       const deleteTodoList = todoList.filter((todo) => todo.id !== todoId);
-      console.log(todoId, deleteTodoList);
       TodoSearchFunction.writeTodos(deleteTodoList);
       return res.send(true);
     }
